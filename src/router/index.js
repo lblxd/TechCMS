@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Login from "../views/Login";
 import Main from "../views/Main";
+import Quit from "../views/Quit";
 
 import ShowData from "../views/ShowData.vue";
 
@@ -46,7 +47,9 @@ const routes = [
     name: "main",
     component: Main,
     children: [
+      { path: "/", component: ShowData },
       { path: "/data", component: ShowData },
+      { path: "/quit", component: Quit },
 
       { path: "/categories/create", component: CategoryEdit },
       { path: "/categories/edit/:id", component: CategoryEdit, props: true },

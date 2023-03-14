@@ -7,6 +7,9 @@ import "./style.css";
 
 Vue.config.productionTip = false;
 
+import * as echarts from "echarts";
+Vue.prototype.$echarts = echarts;
+
 import http from "./http";
 Vue.prototype.$http = http;
 

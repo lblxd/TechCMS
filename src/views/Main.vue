@@ -6,10 +6,10 @@
           <template slot="title"
             ><i class="el-icon-message"></i>内容管理</template
           >
+          <el-menu-item index="/data">数据展示</el-menu-item>
           <el-menu-item-group>
             <template slot="title">文章管理</template>
             <el-menu-item index="/articles/create">新建文章</el-menu-item>
-            <el-menu-item index="/data">数据展示</el-menu-item>
             <el-menu-item index="/articles/list">文章列表</el-menu-item>
           </el-menu-item-group>
           <el-menu-item-group>
@@ -61,14 +61,17 @@
             <el-menu-item index="/users/create">新建用户</el-menu-item>
             <el-menu-item index="/users/list">用户列表</el-menu-item>
           </el-menu-item-group>
+          <el-menu-item index="/quit">退出登录</el-menu-item>
         </el-submenu>
       </el-menu>
     </el-aside>
 
     <el-container>
       <el-header style="text-align: right; font-size: 12px">
-        <span>退出账号</span>
-      </el-header>
+        <el-button type="text" size="small" @click="$router.push(`/quit`)"
+          >退出登录</el-button
+        ></el-header
+      >
 
       <el-main>
         <router-view :key="$route.path"></router-view>
@@ -76,7 +79,20 @@
     </el-container>
   </el-container>
 </template>
-
+<script>
+export default {
+  methods: {
+    quit() {
+      localStorage.clear();
+      this.$router.push("/login");
+      this.$message({
+        type: "success",
+        message: "退出成功，请重新登录",
+      });
+    },
+  },
+};
+</script>
 <style>
 .el-header {
   background-color: #b3c0d1;
@@ -89,5 +105,4 @@
 }
 </style>
 
-<script>
-</script>
+<script></script>
